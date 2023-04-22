@@ -32,10 +32,21 @@ function creatFotoCardsMurkup(galleryItems) {
 //console.log(creatFotoCardsMurkup(galleryItems));
 function onImageClick(evt) {
   evt.preventDefault();
-  if (!evt.target.classList.contains("gallery__image")) {
-    return;
-  }
+  if (!evt.target.classList.contains("gallery__image")) return;
   const bigImage = evt.target.dataset.source;
-  evt.target.src = bigImage;
-  console.log(evt.target.src);
+  const bigImageShow = basicLightbox.create(
+    `<img src="${bigImage}" width="800" height="600">`
+  );
+  bigImageShow.show();
+  console.log(bigImageShow.element());
+  bigImageShow.element().addEventListener("keydown", onImageEscClose);
 }
+
+function onImageEscClose(e) {
+  console.log(`Hf,jnftn`);
+  if (e.code === "Escape") {
+    bigImageShow.close();
+    bigImageShow.element().removeEventListener("keydown", onImageEscClose);
+  }
+}
+//bigImageShow.element().addEventListener("keydown", onImageEscClose);
