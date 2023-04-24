@@ -35,18 +35,26 @@ function onImageClick(evt) {
   if (!evt.target.classList.contains("gallery__image")) return;
   const bigImage = evt.target.dataset.source;
   const bigImageShow = basicLightbox.create(
-    `<img src="${bigImage}" width="800" height="600">`
+    `
+     <img src="${bigImage}" width="800" height="600">
+  `,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", onImageEscClose);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", onImageEscClose);
+      },
+    }
   );
   bigImageShow.show();
   console.log(bigImageShow.element());
-  bigImageShow.element().addEventListener("keydown", onImageEscClose);
-}
+  //bigImageShow.element().addEventListener("keydown", onImageEscClose);
 
-function onImageEscClose(e) {
-  console.log(`Hf,jnftn`);
-  if (e.code === "Escape") {
-    bigImageShow.close();
-    bigImageShow.element().removeEventListener("keydown", onImageEscClose);
+  function onImageEscClose(e) {
+    console.log(`Працює!!!`);
+    if (e.code === "Escape") {
+      bigImageShow.close();
+    }
   }
 }
-//bigImageShow.element().addEventListener("keydown", onImageEscClose);
