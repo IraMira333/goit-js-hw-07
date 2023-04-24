@@ -29,7 +29,7 @@ function creatFotoCardsMurkup(galleryItems) {
     })
     .join("");
 }
-//console.log(creatFotoCardsMurkup(galleryItems));
+
 function onImageClick(evt) {
   evt.preventDefault();
   //if (!evt.target.classList.contains("gallery__image")) return;
@@ -50,7 +50,6 @@ function onImageClick(evt) {
   );
   bigImageShow.show();
   console.log(bigImageShow.element());
-  //bigImageShow.element().addEventListener("keydown", onImageEscClose);
 
   function onImageEscClose(e) {
     console.log(`Працює!!!`);
