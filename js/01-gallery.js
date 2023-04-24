@@ -32,7 +32,8 @@ function creatFotoCardsMurkup(galleryItems) {
 //console.log(creatFotoCardsMurkup(galleryItems));
 function onImageClick(evt) {
   evt.preventDefault();
-  if (!evt.target.classList.contains("gallery__image")) return;
+  //if (!evt.target.classList.contains("gallery__image")) return;
+  if (evt.target.nodeName !== "IMG") return;
   const bigImage = evt.target.dataset.source;
   const bigImageShow = basicLightbox.create(
     `
